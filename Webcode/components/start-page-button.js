@@ -17,7 +17,7 @@ class StartButton extends LitElement {
 
   render() {
     return html`
-      <button @click=${this.handleClick} class="outline-none border-none bg-transparent p-2 cursor-pointer">
+      <button @click=${this.handleClick} class="start-button">
         <svg
           width="291"
           height="124"
