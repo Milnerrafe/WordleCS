@@ -3,7 +3,7 @@ import {
   html,
 } from "https://cdn.jsdelivr.net/gh/lit/dist@3/core/lit-core.min.js";
 
-class StartPageButton extends LitElement {
+class StartButton extends LitElement {
   // Defining the rectColor property
   static properties = {
     rectColor: { type: String, attribute: "rect-color" },
@@ -17,7 +17,7 @@ class StartPageButton extends LitElement {
 
   render() {
     return html`
-      <button @click=${this.handleClick} class="StartPageButton">
+      <button @click=${this.handleClick} class="outline-none border-none bg-transparent p-2 cursor-pointer">
         <svg
           width="291"
           height="124"
@@ -82,4 +82,4 @@ class StartPageButton extends LitElement {
 }
 
 // Register the custom element
-customElements.define("start-page-button", StartPageButton);
+customElements.define("start-page-button", StartButton);
