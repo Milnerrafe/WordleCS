@@ -55,7 +55,20 @@ class StartButton extends LitElement {
   }
 
   handleClick() {
-    alert("Button clicked!");
+    if (this.buttonText == "Play Random") {
+      window.location.href = "/play";
+    } else if (this.buttonText == "How to Play") {
+      window.location.href = "/how-to-play";
+    } else if (this.buttonText == "Close Game") {
+      window.close();
+    } else {
+      if (typeof this.buttonText === "string") {
+        console.error("The Button was clicked with a Unrecognised value of");
+        console.error(this.buttonText);
+      } else {
+        console.error("The Button was clicked with no value");
+      }
+    }
   }
 }
 
