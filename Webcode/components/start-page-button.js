@@ -72,5 +72,4 @@ class StartButton extends LitElement {
   }
 }
 
-// Register the custom element
 customElements.define("start-page-button", StartButton);
