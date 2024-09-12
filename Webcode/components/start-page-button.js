@@ -63,12 +63,11 @@ class StartButton extends LitElement {
       window.location.href = "/";
       window.close();
     } else {
-      if (typeof this.buttonText === "string") {
-        console.error("The Button was clicked with a Unrecognised value of");
-        console.error(this.buttonText);
-      } else {
-        console.error("The Button was clicked with no value");
-      }
+      console.error(
+        'The Button was clicked with a Unrecognised value of "' +
+          this.buttonText +
+          '"',
+      );
     }
   }
 }
