@@ -60,6 +60,7 @@ class StartButton extends LitElement {
     } else if (this.buttonText == "How to Play") {
       window.location.href = "/how-to-play";
     } else if (this.buttonText == "Close Game") {
+      window.location.href = "/";
       window.close();
     } else {
       if (typeof this.buttonText === "string") {
