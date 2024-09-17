@@ -1,0 +1,8 @@
+name = "WordDatabase"
+type = "javascript"
+workers_dev = true
+
+# KV Namespace binding for database
+kv_namespaces = [
+    { binding = "Database", id = "83814feed0654e23a66482e667a58f30" },
+]
