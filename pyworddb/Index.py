@@ -22,12 +22,9 @@ def ranworddatamake():
     random.shuffle(data['words'])
     ranworddata = json.dumps(data, indent=4)
 
-## Here we check if our time database JSON file exists. If it does, then we read it and remove any excess spaces.If it doesn't exist, then we set it to a variable with no data inside, so the next piece of code will be able to create it with the correct date.
-try:
-    with open("datedatabase.txt", "r") as datedatabase:
+
+with open("datedatabase.txt", "r") as datedatabase:
         saved_date = datedatabase.read()
-except FileNotFoundError:
-    saved_date = ''
 
 
 if saved_date != date:
@@ -38,7 +35,3 @@ if saved_date != date:
 
     with open("index.json", "w") as index_file:
         index_file.write(ranworddata)
-
-
-print(saved_date)
-print(date)
