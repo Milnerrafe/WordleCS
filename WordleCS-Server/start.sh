@@ -1,19 +1,9 @@
 #!/bin/bash
 
-if [ ! -d "venv" ]; then
-    echo "Creating virtual environment..."
-    python3 -m venv venv
-fi
-
-source venv/bin/activate
-
-echo "Installing dependencies..."
-pip install Flask==3.0.3
-
+echo "Installing dependencies globally..."
+pip install Flask
 
 echo "Starting Flask server..."
-export FLASK_APP=app.py  # Replace with the name of your Python file if not app.py
-export FLASK_ENV=development  # Set to 'production' for production mode
+export FLASK_APP=app.py
+export FLASK_ENV=production
 flask run
-
-deactivate
