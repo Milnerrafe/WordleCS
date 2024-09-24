@@ -35,3 +35,10 @@ if saved_date != date:
 
     with open("index.json", "w") as index_file:
         index_file.write(ranworddata)
+
+
+
+with open("index.json", "r") as exitdata:
+         datatoprint = exitdata.read()
+
+print(datatoprint)
