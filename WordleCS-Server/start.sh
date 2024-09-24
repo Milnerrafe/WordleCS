@@ -8,7 +8,7 @@ fi
 source venv/bin/activate
 
 echo "Installing dependencies..."
-pip install --require-virtualenv -q Flask==3.0.3
+pip install Flask==3.0.3
 
 
 echo "Starting Flask server..."
