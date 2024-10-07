@@ -1,5 +1,6 @@
 import requests
-import json
+import os
+
 
 def getworldewords(wordnumber):
     if wordnumber > 3563:
@@ -10,6 +11,8 @@ def getworldewords(wordnumber):
         return jsondata[wordnumber]
 
 
-
-
-
+def clear_terminal():
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
