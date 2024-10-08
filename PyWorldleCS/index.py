@@ -17,13 +17,15 @@ def startpage():
     i1wgs = -1
     wcs_1_big_text = pyfiglet.figlet_format("Wordle CS", font="slant")
     print(Fore.GREEN + Style.BRIGHT + wcs_1_big_text)
-    print(Fore.GREEN + Style.BRIGHT + "Welcome to Wordle CS, the community made infinite wordle game.")
-    print("[P]lay")
-    print("[C]ose")
-    kbp1 = input("Please choose your option, press the key and then press Enter")
+    print(Fore.GREEN + "Welcome to Wordle CS, the community made infinite wordle game.")
+    print(Fore.YELLOW + Style.BRIGHT + "[P]lay")
+    print(Fore.RED + Style.BRIGHT + "[C]ose")
+    kbp1 = input(Fore.BLUE + "Please choose your option, press the key and then press Enter↵")
     if kbp1 == "p":
+        clear_terminal()
         i1wgs = 0
     elif kbp1 == "c":
+        clear_terminal()
         i1wgs = -2
     else:
         print("Error with start page function")
