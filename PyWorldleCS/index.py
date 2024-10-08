@@ -43,10 +43,8 @@ def game():
 while v1 == 0:
 
    #debug
-   print(wgs)
+   print(f"debug wgs={wgs}, aft={aft}, worddata={worddata}. ")
    aft = aft +1
-   print(aft)
-   print(worddata)
    #debug
 
    if wgs >= 0:
@@ -56,8 +54,10 @@ while v1 == 0:
    elif wgs == -2:
        v1 = 1
    else:
+       # for prod clear_terminal()
        exit()
 else:
+    # for prod clear_terminal()
     exit()
 
 
