@@ -16,3 +16,16 @@ def clear_terminal():
         os.system('cls')
     else:
         os.system('clear')
+
+
+def iswordreal(word):
+    datafromurl = requests.get('http://wordlecs-server.rafemedia.com/')
+    jsondata = datafromurl.json()["words"]
+    wordlist = jsondata
+    if word in wordlist:
+        result = True
+    else:
+        result = False
+
+    return result
+
