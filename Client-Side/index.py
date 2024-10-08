@@ -31,67 +31,53 @@ def startpage():
         print("Error with start page function")
     return i1wgs
 
+def gameui(currentinputnumber, wordtoguess, guessedletters, wordsguessed):
+    clear_terminal()
+    print(Fore.GREEN + Style.BRIGHT + pyfiglet.figlet_format("Wordle CS", font="slant"))
+    print(wordsguessed[0])
+    print(wordsguessed[1])
+    print(wordsguessed[2])
+    print(wordsguessed[3])
+    print(wordsguessed[4])
+    print(wordsguessed[5])
+    return 1
+
+
+
+
+
 def game():
+    wordtoguess = getworldewords(wgs)
+    currentinputnumber = 0
+    v2 = 0
+    i2wgs = -2
+    guessedletters = []
+    wordsguessed = ["[][][][][]", "[][][][][]", "[][][][][]", "[][][][][]", "[][][][][]", "[][][][][]"]
+    # while v2 == 0:
+    currentinputnumber = currentinputnumber + 1
+    v2 = gameui(currentinputnumber, wordtoguess, guessedletters, wordsguessed)
+
+    return i2wgs
+
+
+
+
+
+
+
+
+
+if wgs >= 0:
+    wsg = game()
+elif wgs == -1:
    clear_terminal()
-   c1 = 0
-   v2 = 0
-   word1 = " █ █ █ █ █ █ █"
-   word2 = " █ █ █ █ █ █ █"
-   word3 = " █ █ █ █ █ █ █"
-   word4 = " █ █ █ █ █ █ █"
-   word5 = " █ █ █ █ █ █ █"
-   word6 = " █ █ █ █ █ █ █"
-   while v2 == 0:
-       i2wgs = 0
-       print(Fore.GREEN + Style.BRIGHT + pyfiglet.figlet_format("Wordle CS", font="slant"))
-       print(word1)
-       print(word2)
-       print(word3)
-       print(word4)
-       print(word5)
-       print(word6)
-       if c1 == 1:
-           word1 = input(f"Enter Your Guess, Number {c1}")
-       elif c1 == 2:
-           word2 = input(f"Enter Your Guess, Number {c1}")
-       elif c1 == 3:
-           word3 = input(f"Enter Your Guess, Number {c1}")
-       elif c1 == 4:
-           word4 = input(f"Enter Your Guess, Number {c1}")
-       elif c1 == 5:
-           word5 = input(f"Enter Your Guess, Number {c1}")
-       elif c1 == 6:
-           word6 = input(f"Enter Your Guess, Number {c1}")
-       c1 = c1 + 1
-       if c1 == 6:
-           v2 = 1
-   if v2 == 2:
-       i2wgs = -1
-   return i2wgs
-
-
-
-
-while v1 == 0:
-
-   #debug
-   print(f"debug wgs={wgs}, aft={aft}, worddata={worddata}. ")
-   aft = aft +1
-   #debug
-
-   if wgs >= 0:
-       wsg = game()
-   elif wgs == -1:
-       clear_terminal()
-       wgs = startpage()
-   elif wgs == -2:
-       v1 = 1
-   else:
-       # for prod clear_terminal()
-       exit()
+   wgs = startpage()
+elif wgs == -2:
+     v1 = 1
 else:
-    # for prod clear_terminal()
-    exit()
+  clear_terminal()
+  exit()
+
 
 
 
