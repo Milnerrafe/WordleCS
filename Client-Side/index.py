@@ -14,7 +14,7 @@ aft = 0
 
 # Make a function that will serve as the start page to the Python app, telling users to press play to start the game or press C to close the game.
 def startpage():
-    clear_terminal()
+    print(f"var in startpage = {wgs}")
     i1wgs = -1
     print(Fore.GREEN + Style.BRIGHT + pyfiglet.figlet_format("Wordle CS", font="slant"))
     print(Fore.GREEN + "Welcome to Wordle CS, the community made infinite wordle game.")
@@ -63,21 +63,9 @@ def game():
 
 
 
-
-
-
-
-if wgs >= 0:
-    wsg = game()
-elif wgs == -1:
-   clear_terminal()
-   wgs = startpage()
-elif wgs == -2:
-     v1 = 1
-else:
-  clear_terminal()
-  exit()
-
+print(wgs)
+wgs = startpage()
+print(wgs)
 
 
 
