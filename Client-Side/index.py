@@ -32,15 +32,66 @@ def startpage():
     return i1wgs
 
 def gameui(currentinputnumber, wordtoguess, guessedletters, wordsguessed):
+    inputselected = False
+    wordinput = ""
     clear_terminal()
     print(Fore.GREEN + Style.BRIGHT + pyfiglet.figlet_format("Wordle CS", font="slant"))
-    print(wordsguessed[0])
-    print(wordsguessed[1])
-    print(wordsguessed[2])
-    print(wordsguessed[3])
-    print(wordsguessed[4])
-    print(wordsguessed[5])
-    return 1
+
+    if wordsguessed[0] == "null":
+        if not inputselected:
+            wordinput = input("[][][][][]")
+            inputselected = True
+        else:
+            print("[][][][][]")
+    else:
+        print(wordsguessed[0])
+
+    if wordsguessed[1] == "null":
+        if not inputselected:
+            wordinput = input("[][][][][]")
+            inputselected = True
+        else:
+            print("[][][][][]")
+    else:
+        print(wordsguessed[1])
+
+    if wordsguessed[2] == "null":
+        if not inputselected:
+            wordinput = input("[][][][][]")
+            inputselected = True
+        else:
+            print("[][][][][]")
+    else:
+        print(wordsguessed[2])
+
+    if wordsguessed[3] == "null":
+        if not inputselected:
+            wordinput = input("[][][][][]")
+            inputselected = True
+        else:
+            print("[][][][][]")
+    else:
+        print(wordsguessed[3])
+
+    if wordsguessed[4] == "null":
+        if not inputselected:
+            wordinput = input("[][][][][]")
+            inputselected = True
+        else:
+            print("[][][][][]")
+    else:
+        print(wordsguessed[4])
+
+    if wordsguessed[5] == "null":
+        if not inputselected:
+            wordinput = input("[][][][][]")
+            inputselected = True
+        else:
+            print("[][][][][]")
+    else:
+        print(wordsguessed[5])
+
+    return wordinput
 
 
 
@@ -52,20 +103,36 @@ def game():
     v2 = 0
     i2wgs = -2
     guessedletters = []
-    wordsguessed = ["[][][][][]", "[][][][][]", "[][][][][]", "[][][][][]", "[][][][][]", "[][][][][]"]
+    wordsguessed = ["AUDIO", "WORDS", "null", "null", "null", "null"]
     # while v2 == 0:
     currentinputnumber = currentinputnumber + 1
-    v2 = gameui(currentinputnumber, wordtoguess, guessedletters, wordsguessed)
+    wordinput = gameui(currentinputnumber, wordtoguess, guessedletters, wordsguessed)
 
+    if wordsguessed[0] == "null":
+        wordinput = wordsguessed[0]
+    elif wordsguessed[1] == "null":
+        wordinput = wordsguessed[1]
+    elif wordsguessed[2] == "null":
+        wordinput = wordsguessed[2]
+    elif wordsguessed[3] == "null":
+        wordinput = wordsguessed[3]
+    elif wordsguessed[4] == "null":
+        wordinput = wordsguessed[4]
+    elif wordsguessed[5] == "null":
+        wordinput = wordsguessed[5]
+
+    print(wordsguessed)
     return i2wgs
 
 
 
 
 
-print(wgs)
+
 wgs = startpage()
-print(wgs)
+if wgs == 0:
+    game()
+
 
 
 
