@@ -44,7 +44,7 @@
         }
 
         /* Customizable dummy input colors */
- 
+
 
         .dummy-box.green {
             background-color: lightgreen;
@@ -73,22 +73,14 @@
         }
     </style>
     <title>Six Input Rows</title>
-    
+
 </head>
 <body>
     <div class="container">
         <!-- Active input row -->
 
 
-        <!-- Dummy input rows (non-editable but colored and preset letters) -->
-        <div class="input-row">
-            <input type="text" class="letter-box dummy-box green" value="A" readonly>
-            <input type="text" class="letter-box dummy-box yellow" value="U" readonly>
-            <input type="text" class="letter-box dummy-box " value="D" readonly>
-            <input type="text" class="letter-box dummy-box green" value="I" readonly>
-            <input type="text" class="letter-box dummy-box " value="O" readonly>
-        </div>
-        
+
                         <div class="input-row">
             <input type="text" maxlength="1" class="letter-box active-box" id="active1">
             <input type="text" maxlength="1" class="letter-box active-box" id="active2">
@@ -120,71 +112,89 @@
             <input type="text" class="letter-box dummy-box " value="" readonly>
             <input type="text" class="letter-box dummy-box " value="" readonly>
         </div>
-        
+
+        <div class="input-row">
+            <input type="text" class="letter-box dummy-box " value="" readonly>
+            <input type="text" class="letter-box dummy-box " value="" readonly>
+            <input type="text" class="letter-box dummy-box " value="" readonly>
+            <input type="text" class="letter-box dummy-box " value="" readonly>
+            <input type="text" class="letter-box dummy-box " value="" readonly>
+        </div>
+
 
     </div>
-    
-<script>
-// Get the active input elements
-const activeInputs = document.querySelectorAll('.active-box');
 
-// Automatically focus on the first active input when the page loads
-window.onload = () => {
-    activeInputs[0].focus();
-};
+    <script>
+        // Get the active input elements
+        const activeInputs = document.querySelectorAll('.active-box');
 
-// Move focus to the next active input when one is filled
-activeInputs.forEach((input, index) => {
-    input.addEventListener('input', () => {
-        // Ensure the input is capitalized
-        input.value = input.value.toUpperCase();
+        // Automatically focus on the first active input when the page loads
+        window.onload = () => {
+            activeInputs[0].focus();
+        };
 
-        // Move to next input if this one is filled
-        if (input.value.length === 1 && index < activeInputs.length - 1) {
-            activeInputs[index + 1].focus();
+        // Move focus to the next active input when one is filled
+        activeInputs.forEach((input, index) => {
+            input.addEventListener('input', () => {
+                // Ensure the input is capitalized
+                input.value = input.value.toUpperCase();
+
+                // Move to next input if this one is filled
+                if (input.value.length === 1 && index < activeInputs.length - 1) {
+                    activeInputs[index + 1].focus();
+                }
+            });
+
+            // Handle backspace to go back to the previous input
+            input.addEventListener('keydown', (event) => {
+                if (event.key === 'Backspace' && input.value === '' && index > 0) {
+                    activeInputs[index - 1].focus();
+                }
+
+                // Handle "Enter" to send the request
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    sendRequest(); // Trigger request when "Enter" is pressed
+                }
+            });
+        });
+
+        // Function to send the HTTP request and replace the page content
+        function sendRequest() {
+            const inputValues = Array.from(activeInputs).map(input => input.value);
+            const dataToSend = {
+                "1": inputValues,
+                "2": [],
+                "3": [],
+                "4": [],
+                "5": []
+            };
+
+            // Send the HTTP POST request with JSON data
+            fetch('/backend', { // Replace with your actual server endpoint
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json', // Set content type to JSON
+                },
+                body: JSON.stringify(dataToSend), // Convert the data object to JSON string
+            })
+            .then(response => response.text()) // Expecting HTML response
+            .then(html => {
+                // Replace the entire page content with the response HTML
+                document.body.innerHTML = html;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         }
-    });
 
-    // Handle backspace to go back to the previous input
-    input.addEventListener('keydown', (event) => {
-        if (event.key === 'Backspace' && input.value === '' && index > 0) {
-            activeInputs[index - 1].focus();
-        }
+        // Function to re-initialize inputs if needed after response
 
-        // Handle "Enter" to send the request
-        if (event.key === 'Enter') {
-            event.preventDefault();
-            sendRequest(); // Trigger request when "Enter" is pressed
-        }
-    });
-});
-
-// Function to send the HTTP request and replace the page content
-function sendRequest() {
-    const inputValues = Array.from(activeInputs).map(input => input.value).join('');
-
-    // Prepare the form data (can include additional data if needed)
-    const formData = new FormData();
-    formData.append('input', inputValues); // Send the word as a single string
-    formData.append('number', 1); // Send a number if required
-
-    // Send the HTTP POST request
-    fetch('/your-endpoint', { // Replace with your actual server endpoint
-        method: 'POST',
-        body: formData,
-    })
-    .then(response => response.text()) // Expecting HTML response
-    .then(html => {
-        // Replace the entire page content with the response HTML
-        document.body.innerHTML = html;
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-}
-</script>
+        </script>
 
 
-   
+
+
+
 </body>
 </html>
