@@ -40,6 +40,7 @@ async def words(request: Request):
          return text(data)
 
 
+
 # { request.json = e.g. '1':['a''u''d''i''o'] '2':['a''u''d''i''o'] '3':[] '4':[] '5':[]}
 @app.route('/backend', methods=["POST"],)
 async def backend(request: Request):
